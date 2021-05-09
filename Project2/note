@@ -1,0 +1,16 @@
+0x5555555558b8 <phase0+172>         mov    %rdx,%rsi                                                                            │
+   │0x5555555558bb <phase0+175>     mov    %rax,%rdi                                                                            │
+  >│0x5555555558be <phase0+178>     callq  0x5555555550a0 <strcmp@plt>
+
+
+
+x/16gx $rsp
+
+b *0x555555555afa
+b *0x0000555555555aee
+
+
+0x7fffffffe470: 0x3261726f69626f63      0x00007ffff7f8ea00
+0x7fffffffe480: 0x000000a800000000      0x0000000500000000
+                                -0x4    0x0000000200000000
+0x7fffffffe490: 0x00007fffffffe4c0      0x00005555555563ab

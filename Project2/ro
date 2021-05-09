@@ -1,0 +1,321 @@
+00000000000020ed <read_input_phase7>:
+    20ed:	55                   	push   %rbp
+    20ee:	48 89 e5             	mov    %rsp,%rbp
+    20f1:	48 81 ec 30 02 00 00 	sub    $0x230,%rsp
+    20f8:	48 89 bd d8 fd ff ff 	mov    %rdi,-0x228(%rbp)
+    20ff:	48 89 b5 d0 fd ff ff 	mov    %rsi,-0x230(%rbp)
+    2106:	48 8d 85 e0 fd ff ff 	lea    -0x220(%rbp),%rax
+    210d:	ba 00 02 00 00       	mov    $0x200,%edx
+    2112:	be 00 00 00 00       	mov    $0x0,%esi
+    2117:	48 89 c7             	mov    %rax,%rdi
+    211a:	e8 61 ef ff ff       	callq  1080 <memset@plt>
+    211f:	be 00 10 00 00       	mov    $0x1000,%esi
+    2124:	bf 00 10 00 00       	mov    $0x1000,%edi
+    2129:	e8 82 ef ff ff       	callq  10b0 <memalign@plt>
+    212e:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+    2132:	48 83 7d f0 00       	cmpq   $0x0,-0x10(%rbp)
+    2137:	75 0c                	jne    2145 <read_input_phase7+0x58>
+    2139:	48 8d 3d 25 11 00 00 	lea    0x1125(%rip),%rdi        # 3265 <_IO_stdin_used+0x265>
+    2140:	e8 fb ee ff ff       	callq  1040 <puts@plt>
+    2145:	48 8b 95 d8 fd ff ff 	mov    -0x228(%rbp),%rdx
+    214c:	48 8d 85 e0 fd ff ff 	lea    -0x220(%rbp),%rax
+    2153:	be ff 01 00 00       	mov    $0x1ff,%esi
+    2158:	48 89 c7             	mov    %rax,%rdi
+    215b:	e8 30 ef ff ff       	callq  1090 <fgets@plt>
+    2160:	48 89 c2             	mov    %rax,%rdx
+    2163:	48 8d 85 e0 fd ff ff 	lea    -0x220(%rbp),%rax
+    216a:	48 39 c2             	cmp    %rax,%rdx
+    216d:	74 0c                	je     217b <read_input_phase7+0x8e>
+    216f:	48 8d 3d f7 10 00 00 	lea    0x10f7(%rip),%rdi        # 326d <_IO_stdin_used+0x26d>
+    2176:	e8 c5 ee ff ff       	callq  1040 <puts@plt>
+    217b:	48 8d 85 e0 fd ff ff 	lea    -0x220(%rbp),%rax
+    2182:	48 89 c7             	mov    %rax,%rdi
+    2185:	e8 9c f2 ff ff       	callq  1426 <is_resign>
+    218a:	89 c2                	mov    %eax,%edx
+    218c:	48 8b 85 d0 fd ff ff 	mov    -0x230(%rbp),%rax
+    2193:	89 10                	mov    %edx,(%rax)
+    2195:	48 8b 85 d0 fd ff ff 	mov    -0x230(%rbp),%rax
+    219c:	8b 00                	mov    (%rax),%eax
+    219e:	85 c0                	test   %eax,%eax
+    21a0:	74 0a                	je     21ac <read_input_phase7+0xbf>
+    21a2:	b8 00 00 00 00       	mov    $0x0,%eax
+    21a7:	e9 a2 00 00 00       	jmpq   224e <read_input_phase7+0x161>
+    21ac:	48 8d 85 e0 fd ff ff 	lea    -0x220(%rbp),%rax
+    21b3:	48 89 c7             	mov    %rax,%rdi
+    21b6:	e8 95 ee ff ff       	callq  1050 <strlen@plt>
+    21bb:	89 45 ec             	mov    %eax,-0x14(%rbp)
+    21be:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+    21c5:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+    21cc:	eb 3c                	jmp    220a <read_input_phase7+0x11d>
+    21ce:	8b 55 fc             	mov    -0x4(%rbp),%edx
+    21d1:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    21d5:	48 01 c2             	add    %rax,%rdx
+    21d8:	48 8d 8d e0 fd ff ff 	lea    -0x220(%rbp),%rcx
+    21df:	8b 45 f8             	mov    -0x8(%rbp),%eax
+    21e2:	48 01 c8             	add    %rcx,%rax
+    21e5:	48 8d 35 61 10 00 00 	lea    0x1061(%rip),%rsi        # 324d <_IO_stdin_used+0x24d>
+    21ec:	48 89 c7             	mov    %rax,%rdi
+    21ef:	b8 00 00 00 00       	mov    $0x0,%eax
+    21f4:	e8 e7 ee ff ff       	callq  10e0 <__isoc99_sscanf@plt>
+    21f9:	89 45 e8             	mov    %eax,-0x18(%rbp)
+    21fc:	83 7d e8 01          	cmpl   $0x1,-0x18(%rbp)
+    2200:	75 12                	jne    2214 <read_input_phase7+0x127>
+    2202:	83 45 f8 03          	addl   $0x3,-0x8(%rbp)
+    2206:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+    220a:	8b 45 f8             	mov    -0x8(%rbp),%eax
+    220d:	3b 45 ec             	cmp    -0x14(%rbp),%eax
+    2210:	72 bc                	jb     21ce <read_input_phase7+0xe1>
+    2212:	eb 01                	jmp    2215 <read_input_phase7+0x128>
+    2214:	90                   	nop
+    2215:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    2219:	ba 05 00 00 00       	mov    $0x5,%edx
+    221e:	be 00 10 00 00       	mov    $0x1000,%esi
+    2223:	48 89 c7             	mov    %rax,%rdi
+    2226:	e8 c5 ee ff ff       	callq  10f0 <mprotect@plt>
+    222b:	89 45 e8             	mov    %eax,-0x18(%rbp)
+    222e:	83 7d e8 00          	cmpl   $0x0,-0x18(%rbp)
+    2232:	74 16                	je     224a <read_input_phase7+0x15d>
+    2234:	48 8d 3d 45 10 00 00 	lea    0x1045(%rip),%rdi        # 3280 <_IO_stdin_used+0x280>
+    223b:	e8 e0 ee ff ff       	callq  1120 <perror@plt>
+    2240:	bf ff ff ff ff       	mov    $0xffffffff,%edi
+    2245:	e8 e6 ee ff ff       	callq  1130 <exit@plt>
+    224a:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    224e:	c9                   	leaveq 
+    224f:	c3                   	retq   
+
+0000000000002250 <phase7>:
+    2250:	55                   	push   %rbp
+    2251:	48 89 e5             	mov    %rsp,%rbp
+    2254:	48 83 ec 30          	sub    $0x30,%rsp
+    2258:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+    225c:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+    2263:	48 8d 55 ec          	lea    -0x14(%rbp),%rdx
+    2267:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    226b:	48 89 d6             	mov    %rdx,%rsi
+    226e:	48 89 c7             	mov    %rax,%rdi
+    2271:	e8 77 fe ff ff       	callq  20ed <read_input_phase7>
+
+    .2276:	48 89 45 f8          	mov    %rax,-0x8(%rbp)  return addr (proteceted) heap
+    227a:	8b 45 ec             	mov    -0x14(%rbp),%eax
+    227d:	83 f8 01             	cmp    $0x1,%eax
+    2280:	75 11                	jne    2293 <phase7+0x43>
+    2282:	48 8d 3d 26 10 00 00 	lea    0x1026(%rip),%rdi        # 32af <_IO_stdin_used+0x2af>
+    2289:	e8 b2 ed ff ff       	callq  1040 <puts@plt>
+    228e:	e9 9f 00 00 00       	jmpq   2332 <phase7+0xe2>
+    2293:	48 83 7d f8 00       	cmpq   $0x0,-0x8(%rbp)
+    2298:	75 0a                	jne    22a4 <phase7+0x54>
+    229a:	b8 00 00 00 00       	mov    $0x0,%eax
+    229f:	e8 91 ef ff ff       	callq  1235 <explode>
+    22a4:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    22a8:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+    22ac:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    22b0:	be cd 00 00 00       	mov    $0xcd,%esi
+    22b5:	bf 0a 00 00 00       	mov    $0xa,%edi
+    22ba:	ff d0                	callq  *%rax
+    22bc:	3d c7 00 00 00       	cmp    $0xc7,%eax
+    22c1:	74 0a                	je     22cd <phase7+0x7d>
+    22c3:	b8 00 00 00 00       	mov    $0x0,%eax
+    22c8:	e8 68 ef ff ff       	callq  1235 <explode>
+    22cd:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    22d1:	be 38 00 00 00       	mov    $0x38,%esi
+    22d6:	bf 12 00 00 00       	mov    $0x12,%edi
+    22db:	ff d0                	callq  *%rax
+    22dd:	83 f8 2a             	cmp    $0x2a,%eax
+    22e0:	74 0a                	je     22ec <phase7+0x9c>
+    22e2:	b8 00 00 00 00       	mov    $0x0,%eax
+    22e7:	e8 49 ef ff ff       	callq  1235 <explode>
+    22ec:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    22f0:	be 00 00 00 00       	mov    $0x0,%esi
+    22f5:	bf 01 00 00 00       	mov    $0x1,%edi
+    22fa:	ff d0                	callq  *%rax
+    22fc:	83 f8 01             	cmp    $0x1,%eax
+    22ff:	74 0a                	je     230b <phase7+0xbb>
+    2301:	b8 00 00 00 00       	mov    $0x0,%eax
+    2306:	e8 2a ef ff ff       	callq  1235 <explode>
+    230b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    230f:	48 89 c7             	mov    %rax,%rdi
+    2312:	e8 19 ed ff ff       	callq  1030 <free@plt>
+    2317:	48 8d 3d a8 0f 00 00 	lea    0xfa8(%rip),%rdi        # 32c6 <_IO_stdin_used+0x2c6>
+    231e:	e8 1d ed ff ff       	callq  1040 <puts@plt>
+    2323:	48 8b 05 96 2d 00 00 	mov    0x2d96(%rip),%rax        # 50c0 <stdin@@GLIBC_2.2.5>
+    232a:	48 89 c7             	mov    %rax,%rdi
+    232d:	e8 9e ed ff ff       	callq  10d0 <fflush@plt>
+    2332:	c9                   	leaveq 
+    2333:	c3                   	retq   
+
+
+0x00005555555560ed <+0>:     push   %rbp
+   0x00005555555560ee <+1>:     mov    %rsp,%rbp
+   0x00005555555560f1 <+4>:     sub    $0x230,%rsp
+   0x00005555555560f8 <+11>:    mov    %rdi,-0x228(%rbp)
+   0x00005555555560ff <+18>:    mov    %rsi,-0x230(%rbp)
+   0x0000555555556106 <+25>:    lea    -0x220(%rbp),%rax
+   0x000055555555610d <+32>:    mov    $0x200,%edx
+   0x0000555555556112 <+37>:    mov    $0x0,%esi
+   0x0000555555556117 <+42>:    mov    %rax,%rdi
+   0x000055555555611a <+45>:    callq  0x555555555080 <memset@plt>
+   0x000055555555611f <+50>:    mov    $0x1000,%esi
+   0x0000555555556124 <+55>:    mov    $0x1000,%edi
+   0x0000555555556129 <+60>:    callq  0x5555555550b0 <memalign@plt>
+   0x000055555555612e <+65>:    mov    %rax,-0x10(%rbp)
+   0x0000555555556132 <+69>:    cmpq   $0x0,-0x10(%rbp)
+   0x0000555555556137 <+74>:    jne    0x555555556145 <read_input_phase7+88>
+   0x0000555555556139 <+76>:    lea    0x1125(%rip),%rdi        # 0x555555557265
+   0x0000555555556140 <+83>:    callq  0x555555555040 <puts@plt>
+   0x0000555555556145 <+88>:    mov    -0x228(%rbp),%rdx
+   0x000055555555614c <+95>:    lea    -0x220(%rbp),%rax
+   0x0000555555556153 <+102>:   mov    $0x1ff,%esi
+   0x0000555555556158 <+107>:   mov    %rax,%rdi
+.   0x000055555555615b <+110>:   callq  0x555555555090 <fgets@plt>
+
+   0x0000555555556160 <+115>:   mov    %rax,%rdx
+   0x0000555555556163 <+118>:   lea    -0x220(%rbp),%rax
+   0x000055555555616a <+125>:   cmp    %rax,%rdx
+   0x000055555555616d <+128>:   je     0x55555555617b <read_input_phase7+142>
+
+   0x000055555555616f <+130>:   lea    0x10f7(%rip),%rdi        # 0x55555555726d
+   0x0000555555556176 <+137>:   callq  0x555555555040 <puts@plt>
+
+   0x000055555555617b <+142>:   lea    -0x220(%rbp),%rax
+   0x0000555555556182 <+149>:   mov    %rax,%rdi
+   0x0000555555556185 <+152>:   callq  0x555555555426 <is_resign>
+   0x000055555555618a <+157>:   mov    %eax,%edx
+   .0x000055555555618c <+159>:   mov    -0x230(%rbp),%rax
+   .0x0000555555556193 <+166>:   mov    %edx,(%rax)
+   .0x0000555555556195 <+168>:   mov    -0x230(%rbp),%rax
+   .0x000055555555619c <+175>:   mov    (%rax),%eax
+   .0x000055555555619e <+177>:   test   %eax,%eax
+
+   .0x00005555555561a0 <+179>:   je     0x5555555561ac <read_input_phase7+191>
+   0x00005555555561a2 <+181>:   mov    $0x0,%eax
+   0x00005555555561a7 <+186>:   jmpq   0x55555555624e <read_input_phase7+353>
+
+   .0x00005555555561ac <+191>:   lea    -0x220(%rbp),%rax  (-0x220(%rbp) fgets input from user)
+   .0x00005555555561b3 <+198>:   mov    %rax,%rdi
+   .0x00005555555561b6 <+201>:   callq  0x555555555050 <strlen@plt>
+   .0x00005555555561bb <+206>:   mov    %eax,-0x14(%rbp)  (strlen = -0x14(%rbp))
+   .0x00005555555561be <+209>:   movl   $0x0,-0x8(%rbp)   (-0x8(%rbp) = 0 counter(+3))
+   .0x00005555555561c5 <+216>:   movl   $0x0,-0x4(%rbp)   (-0x4(%rbp) = 0 counter(+1))
+
+   .0x00005555555561cc <+223>:   jmp    0x55555555620a <read_input_phase7+285>
+
+   .0x00005555555561ce <+225>:   mov    -0x4(%rbp),%edx   (edx = counter, edx is the buffer iterator)  not used
+   .0x00005555555561d1 <+228>:   mov    -0x10(%rbp),%rax  (memalign, created heap(4096), get the pointer to aligned heap[0])
+   .0x00005555555561d5 <+232>:   add    %rax,%rdx          (iterator, heap+count) not used
+   .0x00005555555561d8 <+235>:   lea    -0x220(%rbp),%rcx   (-0x220(%rbp) fgets input from user)
+
+   .0x00005555555561df <+242>:   mov    -0x8(%rbp),%eax    
+   .0x00005555555561e2 <+245>:   add    %rcx,%rax            (rax = user_input[counter(+3)] ) [if input is emeka, then 0=>e, 0+3=>k...]
+
+   .0x00005555555561e5 <+248>:   lea    0x1061(%rip),%rsi        # 0x55555555724d  (" %x")
+   .0x00005555555561ec <+255>:   mov    %rax,%rdi
+   .0x00005555555561ef <+258>:   mov    $0x0,%eax
+   .0x00005555555561f4 <+263>:   callq  0x5555555550e0 <__isoc99_sscanf@plt>   sscanf("user_input", " %x", heap[count+1]) heap[count+1] = convertTohex(user_input[count+1])
+   0x00005555555561f9 <+268>:   mov    %eax,-0x18(%rbp)   (return value from sscanf, expecting 1)
+   0x00005555555561fc <+271>:   cmpl   $0x1,-0x18(%rbp)
+   0x0000555555556200 <+275>:   jne    0x555555556214 <read_input_phase7+295>  if !sscanf goto down
+
+2 counters (+1, +3)
+   0x0000555555556202 <+277>:   addl   $0x3,-0x8(%rbp)   (increment count by 3)
+   0x0000555555556206 <+281>:   addl   $0x1,-0x4(%rbp)   (increment count by 1) not used
+
+   .0x000055555555620a <+285>:   mov    -0x8(%rbp),%eax  
+   .0x000055555555620d <+288>:   cmp    -0x14(%rbp),%eax  if (strlen < count+3)
+
+   .0x0000555555556210 <+291>:   jb     0x5555555561ce <read_input_phase7+225>  (jmp to 0x5555555561ce if 0 < strlen ) jump below
+.0x0000555555556212 <+293>:   jmp    0x555555556215 <read_input_phase7+296>  (else contine)
+.0x0000555555556214 <+295>:   nop
+
+   0x0000555555556215 <+296>:   mov    -0x10(%rbp),%rax     (memalign, created heap(4096), get the pointer to aligned heap[0])
+   0x0000555555556219 <+300>:   mov    $0x5,%edx
+   0x000055555555621e <+305>:   mov    $0x1000,%esi
+   0x0000555555556223 <+310>:   mov    %rax,%rdi
+   0x0000555555556226 <+313>:   callq  0x5555555550f0 <mprotect@plt>  mprotect(heap[0], 4096, PROT_READ) protect the heap
+
+   0x000055555555622b <+318>:   mov    %eax,-0x18(%rbp)   get return value
+   0x000055555555622e <+321>:   cmpl   $0x0,-0x18(%rbp)
+   0x0000555555556232 <+325>:   je     0x55555555624a <read_input_phase7+349>  if 0 then successfull
+
+
+   0x0000555555556234 <+327>:   lea    0x1045(%rip),%rdi        # 0x555555557280
+   0x000055555555623b <+334>:   callq  0x555555555120 <perror@plt>
+   0x0000555555556240 <+339>:   mov    $0xffffffff,%edi
+   0x0000555555556245 <+344>:   callq  0x555555555130 <exit@plt>  unsuccessful return
+
+   0x000055555555624a <+349>:   mov    -0x10(%rbp),%rax   successfull return (*heap)
+   0x000055555555624e <+353>:   leaveq 
+   0x000055555555624f <+354>:   retq 
+
+
+
+Dump of assembler code for function phase7:
+   0x0000555555556250 <+0>:     push   %rbp
+   0x0000555555556251 <+1>:     mov    %rsp,%rbp
+   0x0000555555556254 <+4>:     sub    $0x30,%rsp
+   0x0000555555556258 <+8>:     mov    %rdi,-0x28(%rbp)
+   0x000055555555625c <+12>:    movl   $0x0,-0x14(%rbp)
+   0x0000555555556263 <+19>:    lea    -0x14(%rbp),%rdx
+   0x0000555555556267 <+23>:    mov    -0x28(%rbp),%rax
+   0x000055555555626b <+27>:    mov    %rdx,%rsi
+   0x000055555555626e <+30>:    mov    %rax,%rdi
+   0x0000555555556271 <+33>:    callq  0x5555555560ed <read_input_phase7>
+
+   0x0000555555556276 <+38>:    mov    %rax,-0x8(%rbp)      return value (pointer to address of protect heap)
+   0x000055555555627a <+42>:    mov    -0x14(%rbp),%eax     was = 0
+   0x000055555555627d <+45>:    cmp    $0x1,%eax
+   0x0000555555556280 <+48>:    jne    0x555555556293 <phase7+67>
+
+unsuccessful
+   0x0000555555556282 <+50>:    lea    0x1026(%rip),%rdi        # 0x5555555572af ("You gave up Phase 7...")
+   0x0000555555556289 <+57>:    callq  0x555555555040 <puts@plt>   ("You gave up Phase 7...")
+   0x000055555555628e <+62>:    jmpq   0x555555556332 <phase7+226>  (jmp to leave)
+
+   0x0000555555556293 <+67>:    cmpq   $0x0,-0x8(%rbp)
+   0x0000555555556298 <+72>:    jne    0x5555555562a4 <phase7+84>
+   0x000055555555629a <+74>:    mov    $0x0,%eax
+   0x000055555555629f <+79>:    callq  0x555555555235 <explode>
+
+   0x00005555555562a4 <+84>:    mov    -0x8(%rbp),%rax  (protected heap)
+   0x00005555555562a8 <+88>:    mov    %rax,-0x10(%rbp) (protected heap)
+   0x00005555555562ac <+92>:    mov    -0x10(%rbp),%rax (protected heap)
+
+   0x00005555555562b0 <+96>:    mov    $0xcd,%esi   esi = 205 (arg2)
+   0x00005555555562b5 <+101>:   mov    $0xa,%edi    edi = 10 (arg1)
+   0x00005555555562ba <+106>:   callq  *%rax    (the protected heap is called like a function here, assign an instruction to that heap, return 199)
+
+   0x00005555555562bc <+108>:   cmp    $0xc7,%eax   (compare return value 0xc7(199))  
+   0x00005555555562c1 <+113>:   je     0x5555555562cd <phase7+125>
+   0x00005555555562c3 <+115>:   mov    $0x0,%eax
+   0x00005555555562c8 <+120>:   callq  0x555555555235 <explode>
+
+   0x00005555555562cd <+125>:   mov    -0x10(%rbp),%rax   (protected heap)
+   0x00005555555562d1 <+129>:   mov    $0x38,%esi   esi = 56 (arg2)
+   0x00005555555562d6 <+134>:   mov    $0x12,%edi    edi = 18 (arg1)
+   0x00005555555562db <+139>:   callq  *%rax         (the protected heap is called like a function here, assign an instruction to that heap, return 42)
+
+   0x00005555555562dd <+141>:   cmp    $0x2a,%eax   (compare return value 0x2a(42))  
+   0x00005555555562e0 <+144>:   je     0x5555555562ec <phase7+156>
+   0x00005555555562e2 <+146>:   mov    $0x0,%eax
+   0x00005555555562e7 <+151>:   callq  0x555555555235 <explode>
+
+   0x00005555555562ec <+156>:   mov    -0x10(%rbp),%rax  (protected heap)
+   0x00005555555562f0 <+160>:   mov    $0x0,%esi    esi = 0 (arg2)
+   0x00005555555562f5 <+165>:   mov    $0x1,%edi    edi = 1 (arg1)
+   0x00005555555562fa <+170>:   callq  *%rax   (the protected heap is called like a function here, assign an instruction to that heap, return 1)
+
+   0x00005555555562fc <+172>:   cmp    $0x1,%eax  (compare return value 0x1(1)) 
+   0x00005555555562ff <+175>:   je     0x55555555630b <phase7+187>
+   0x0000555555556301 <+177>:   mov    $0x0,%eax
+   0x0000555555556306 <+182>:   callq  0x555555555235 <explode>
+
+   0x000055555555630b <+187>:   mov    -0x8(%rbp),%rax  (protected heap)
+   0x000055555555630f <+191>:   mov    %rax,%rdi
+   0x0000555555556312 <+194>:   callq  0x555555555030 <free@plt>    free heap
+   0x0000555555556317 <+199>:   lea    0xfa8(%rip),%rdi        # 0x5555555572c6
+   0x000055555555631e <+206>:   callq  0x555555555040 <puts@plt>
+   0x0000555555556323 <+211>:   mov    0x2d96(%rip),%rax        # 0x5555555590c0 <stdin@@GLIBC_2.2.5>
+   0x000055555555632a <+218>:   mov    %rax,%rdi
+   0x000055555555632d <+221>:   callq  0x5555555550d0 <fflush@plt>
+
+   0x0000555555556332 <+226>:   leaveq 
+   0x0000555555556333 <+227>:   retq 
